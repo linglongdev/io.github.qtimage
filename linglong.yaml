@@ -1,0 +1,28 @@
+version: "1"
+
+package:
+  id: io.github.qtimage
+  name: qtimage
+  version: 1.0.2.1
+  kind: app
+  description: |
+    qt实现一个简单的图像特殊处理
+
+command:
+  - /opt/apps/io.github.qtimage/files/bin/SimpleImage
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/lerogo/qtimage.git
+    version: master
+    commit: 37cd89c5dfc521cf4705cf7bf32429abd83fbcd2
+
+build: |
+  cd /project/linglong/sources/qtimage.git
+  git apply ../../../0001-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
