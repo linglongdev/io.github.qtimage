@@ -1,0 +1,47 @@
+From 337f434627edc860409657e7c2aa2be23917a468 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 14 Sep 2024 15:33:48 +0800
+Subject: [PATCH] install
+
+---
+ SimpleImage.desktop | 11 +++++++++++
+ SimpleImage.pro     |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 SimpleImage.desktop
+
+diff --git a/SimpleImage.desktop b/SimpleImage.desktop
+new file mode 100644
+index 0000000..791c7a6
+--- /dev/null
++++ b/SimpleImage.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=SimpleImage
++Name=SimpleImage
++Name[zh_CN]=SimpleImage
++Icon=SimpleImage
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=SimpleImage
++Version=1.0
+diff --git a/SimpleImage.pro b/SimpleImage.pro
+index 251a99a..3c47fb1 100644
+--- a/SimpleImage.pro
++++ b/SimpleImage.pro
+@@ -42,3 +42,11 @@ RESOURCES += \
+ 
+ RC_FILE = res/ico.rc
+ 
++
++target.path = $$PREFIX/bin
++desktop.files = SimpleImage.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/scalable/apps/
++icons.files = res/SimpleImage.svg
++
++INSTALLS += target desktop icons
+-- 
+2.43.4
+
